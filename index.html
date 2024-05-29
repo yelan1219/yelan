@@ -57,6 +57,18 @@
         .agree-button:active {
             transform: scale(0.95); /* 点击时缩小 */
         }
+        /* 音乐播放器样式 */
+        .audio-player {
+            text-align: center;
+            padding: 20px;
+        }
+        .controls {
+            margin-top: 10px;
+        }
+        .play-btn, .pause-btn {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
         /* CSS样式结束 */
     </style>
 </head>
@@ -68,10 +80,16 @@
     </video>
     <!-- 背景视频结束 -->
     <!-- 背景音乐开始 -->
-    <audio id="bg-music" preload="auto" autoplay loop>
-        <source src="background.mp3" type="audio/mpeg">
-        您的浏览器不支持音频播放。
-    </audio>
+    <div class="audio-player">
+        <audio id="bg-music" preload="auto" autoplay loop>
+            <source src="background.mp3" type="audio/mpeg">
+            您的浏览器不支持音频播放。
+        </audio>
+        <div class="controls">
+            <button class="play-btn" onclick="playAudio()">播放音乐</button>
+            <button class="pause-btn" onclick="pauseAudio()">暂停音乐</button>
+        </div>
+    </div>
     <!-- 背景音乐结束 -->
     <div class="confession">
         <h1><span class="heart-icon">❤️</span> 亲爱的谭楚萱</h1>
@@ -85,6 +103,16 @@
     </div>
 
     <script>
+        var bgMusic = document.getElementById("bg-music");
+
+        function playAudio() {
+            bgMusic.play();
+        }
+
+        function pauseAudio() {
+            bgMusic.pause();
+        }
+
         function showLove() {
             var agree = confirm("祝老婆早日康复❤❤️");
             if (agree) {
@@ -92,51 +120,5 @@
             }
         }
     </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Audio Player</title>
-    <style>
-        .audio-player {
-            text-align: center;
-            padding: 20px;
-        }
-        .controls {
-            margin-top: 10px;
-        }
-        .play-btn, .pause-btn {
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-
-<div class="audio-player">
-    <audio id="myAudio" autoplay loop preload="auto">
-        <source src="background.mp3" type="audio/mp3">
-        您的浏览器不支持音频播放。
-    </audio>
-    <div class="controls">
-        <button class="play-btn" onclick="playAudio()">播放</button>
-        <button class="pause-btn" onclick="pauseAudio()">暂停</button>
-    </div>
-</div>
-
-<script>
-    var myAudio = document.getElementById("myAudio");
-
-    function playAudio() {
-        myAudio.play();
-    }
-
-    function pauseAudio() {
-        myAudio.pause();
-    }
-</script>
-
 </body>
 </html>
