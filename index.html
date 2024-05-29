@@ -2,6 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 添加视口元标签 -->
     <title>纪念日</title>
     <style>
         body {
@@ -9,22 +10,19 @@
             padding: 0;
             font-family: Arial, sans-serif;
             background: url('626f23e09283bb32e2e97b35994aa5ef.jpg') no-repeat center center fixed;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
             background-size: cover;
-            font-size: 40px; /* 增加字体大小 */
+            font-size: 20px; /* 减少字体大小，使用相对单位 */
         }
         
         .confession {
             position: relative;
             text-align: center;
-            padding: 50px;
+            padding: 20px;
             color: rgb(255, 255, 255);
             mix-blend-mode: screen;
         }
         .heart-icon {
-            font-size: 3em;
+            font-size: 2em;
             color: #ff0909;
             animation: pulse 2s infinite;
         }
@@ -33,9 +31,15 @@
             50% { transform: scale(1.2); }
             100% { transform: scale(1); }
         }
+        @keyframes breath 
+        {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
         .agree-button {
             display: block;
-            margin-top: 20px;
+            margin: 10px auto;
             padding: 10px 20px;
             background-color: #ff0000;
             color: white;
@@ -46,53 +50,69 @@
             text-transform: uppercase;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             transition: background-color 0.3s ease, transform 0.3s ease;
-            animation:  scaleDutton 0.3s ease forwards;
+            animation: breath 2s infinite ease-in-out; /* 添加呼吸动画 */
         }
-        @keyframes scaleButton 
-        {
-            0% 
-                {
-                    transform: scale(1); /* 动画开始时，按钮缩放为原始尺寸 */
-                }
-            50% 
-                {
-                    transform: scale(3); /* 动画进行到一半时，按钮放大30% */
-                }
-            100% 
-                {
-                    transform: scale(1); /* 动画结束时，按钮缩放回原始尺寸 */
-                }
-        }   
-
         .agree-button:active {
-            transform: scale(0.9); /* 按钮被按下时，立即缩小到原始尺寸的90% */
-}
+            transform: scale(0.9);
+        }
         .agree-button:hover {
-            background-color: #f43958;
+            background-color: #fe002a;
             transform: scale(1.05);
-        }
-        .agree-button:active {
-            transform: scale(0.95);
         }
         .audio-player {
             text-align: center;
-            padding: 20px;
+            padding: 10px;
         }
         .controls {
             margin-top: 10px;
         }
-        .play-btn, .pause-btn {
-            padding: 15px 30px;
-            width: 160px; /* 设置宽度 */
-            height: 60px; /* 设置高度 */
-            cursor: pointer;
-            font-size: 0.6em; /* 增加字体大小 */
-            transition: transform 0.3s ease, background-color 0.3s ease; /* 添加过渡效果 */
+        .play-btn, .pause-btn 
+        {
+        padding: 10px 20px; /* 内边距 */
+        background-color: #f1f3f149; /* 背景颜色 */
+        color: rgb(255, 254, 254); /* 文字颜色 */
+        border: none; /* 无边框 */
+        border-radius: 9px; /* 圆角 */
+        width: 75%; /* 按钮宽度设置为相对宽度 */
+        max-width: 175px; /* 最大宽度限制 */
+        height: 35px; /* 设置高度 */
+        cursor: pointer; /* 鼠标悬停时显示手型 */
+        font-size: 0.75em; /* 字体大小 */
+        transition: transform 0.3s ease, background-color 0.3s ease; /* 过渡效果 */
+    }
+
+    /* 悬停时改变按钮背景颜色 */
+    .play-btn:hover, .pause-btn:hover 
+    {
+        background-color: #a1575b; /* 深一点的绿色 */
+    }
+
+    /* 点击时按钮缩放效果 */
+    .play-btn:active, .pause-btn:active 
+    {
+        transform: scale(0.95); /* 点击时缩小 */
+    }
+
+        /* 媒体查询，针对不同屏幕尺寸进行布局调整 */
+        @media (min-width: 600px) {
+            .confession {
+                padding: 50px;
+                font-size: 24px;
+            }
+            .heart-icon {
+                font-size: 3em;
+            }
+            .agree-button {
+                margin-top: 20px;
+            }
+            .play-btn, .pause-btn {
+                width: 160px;
+                height: 60px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 背景音乐开始 -->
     <div class="audio-player">
         <audio id="bg-music" preload="auto" autoplay loop>
             <source src="background.mp3" type="audio/mpeg">
@@ -103,7 +123,6 @@
             <button class="pause-btn" onclick="pauseAudio()">暂停音乐</button>
         </div>
     </div>
-    <!-- 背景音乐结束 -->
     <div class="confession">
         <h1><span class="heart-icon">❤️</span> 亲爱的楚萱</h1>
         <p>我们开始于2019年5月30日</p>
