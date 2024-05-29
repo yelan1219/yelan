@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>浪漫告白</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('626f23e09283bb32e2e97b35994aa5ef.jpg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        .confession {
+            position: relative;
+            text-align: center;
+            padding: 50px;
+            color: white;
+            mix-blend-mode: screen;
+        }
+        .heart-icon {
+            font-size: 4em;
+            color: #ff69b4;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .agree-button {
+            display: block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .agree-button:hover {
+            background-color: #e64c65;
+            transform: scale(1.05);
+        }
+        .agree-button:active {
+            transform: scale(0.95);
+        }
+        .audio-player {
+            text-align: center;
+            padding: 20px;
+        }
+        .controls {
+            margin-top: 10px;
+        }
+        .play-btn, .pause-btn {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- 背景音乐开始 -->
+    <div class="audio-player">
+        <audio id="bg-music" preload="auto" autoplay loop>
+            <source src="background.mp3" type="audio/mpeg">
+            您的浏览器不支持音频播放。
+        </audio>
+        <div class="controls">
+            <button class="play-btn" onclick="playAudio()">播放音乐</button>
+            <button class="pause-btn" onclick="pauseAudio()">暂停音乐</button>
+        </div>
+    </div>
+    <!-- 背景音乐结束 -->
+    <div class="confession">
+        <h1><span class="heart-icon">❤️</span> 亲爱的谭楚萱</h1>
+        <p>我们开始于2019年5月30日,而如今</p>
+        <p>在这个特别的日子里，我想告诉你...</p>
+        <p>你是我生命中最美好的奇迹，</p>
+        <p>每一次想到你，我的心就充满了温暖和喜悦。</p>
+        <p>我想要和你一起分享每一个日出和日落，</p>
+        <p>一起走过未来的每一天。</p>
+        <button class="agree-button" onclick="showLove()">我❤️你！</button>
+    </div>
+
+    <script>
+        var bgMusic = document.getElementById("bg-music");
+
+        function playAudio() {
+            bgMusic.play();
+        }
+
+        function pauseAudio() {
+            bgMusic.pause();
+        }
+
+        function showLove() {
+            var agree = confirm("祝老婆早日康复❤❤️");
+            if (agree) {
+                alert("今日是我们彼此已经在一起1826天了！在这过去的日子里，我们争吵过，但没有不爱你；我们平淡过，但没有不爱你我想说未来无论发生什么，我都不会不爱你！");
+            }
+        }
+    </script>
+</body>
+</html>
