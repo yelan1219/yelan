@@ -15,16 +15,17 @@
             background-size: cover;
             font-size: 40px; /* 增加字体大小 */
         }
+        
         .confession {
             position: relative;
             text-align: center;
             padding: 50px;
-            color: white;
+            color: rgb(255, 255, 255);
             mix-blend-mode: screen;
         }
         .heart-icon {
-            font-size: 4em;
-            color: #ff69b4;
+            font-size: 3em;
+            color: #ff0000;
             animation: pulse 2s infinite;
         }
         @keyframes pulse {
@@ -36,7 +37,7 @@
             display: block;
             margin-top: 20px;
             padding: 10px 20px;
-            background-color: #ff69b4;
+            background-color: #ff0000;
             color: white;
             border: none;
             border-radius: 5px;
@@ -45,9 +46,29 @@
             text-transform: uppercase;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             transition: background-color 0.3s ease, transform 0.3s ease;
+            animation:  scaleDutton 0.3s ease forwards;
         }
+        @keyframes scaleButton 
+        {
+            0% 
+                {
+                    transform: scale(1); /* 动画开始时，按钮缩放为原始尺寸 */
+                }
+            50% 
+                {
+                    transform: scale(3); /* 动画进行到一半时，按钮放大30% */
+                }
+            100% 
+                {
+                    transform: scale(1); /* 动画结束时，按钮缩放回原始尺寸 */
+                }
+        }   
+
+        .agree-button:active {
+            transform: scale(0.9); /* 按钮被按下时，立即缩小到原始尺寸的90% */
+}
         .agree-button:hover {
-            background-color: #e64c65;
+            background-color: #f43958;
             transform: scale(1.05);
         }
         .agree-button:active {
@@ -63,10 +84,10 @@
         .play-btn, .pause-btn {
             padding: 15px 30px;
             width: 160px; /* 设置宽度 */
-            height: 65px; /* 设置高度 */
-
+            height: 60px; /* 设置高度 */
             cursor: pointer;
             font-size: 0.6em; /* 增加字体大小 */
+            transition: transform 0.3s ease, background-color 0.3s ease; /* 添加过渡效果 */
         }
     </style>
 </head>
